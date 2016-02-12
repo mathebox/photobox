@@ -67,3 +67,6 @@ fakecam/*
 
 # Displayed photo
 app/static/img/pic.jpg
+
+# Bower
+**/bower_components/

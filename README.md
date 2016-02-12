@@ -7,6 +7,7 @@ A web server that shows photos taken by a photobox
 ## How to install
 ```
 pip install -r requirements.txt
+bower install
 ```
 
 ## How to start
