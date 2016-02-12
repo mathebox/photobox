@@ -11,6 +11,14 @@ photo_count = 0
 default_image_path = 'static/img/pic.jpg'
 
 
+def start_background_thread():
+    global thread
+    if thread is None:
+        thread = threading.Thread(target=count_photos)
+        thread.daemon = True
+        thread.start()
+
+
 def current_photo_count():
     ls_proc = subprocess.Popen(['ls', 'fakecam'], stdout=subprocess.PIPE)
     return len(list(ls_proc.stdout))
@@ -55,12 +63,14 @@ def count_photos():
 @app.route('/')
 @app.route('/index')
 def index():
-    global thread
-    if thread is None:
-        thread = threading.Thread(target=count_photos)
-        thread.daemon = True
-        thread.start()
+    start_background_thread()
     return render_template('index.html')
+
+
+@app.route('/button')
+def capture_button():
+    start_background_thread()
+    return render_template('index.html', show_button=True)
 
 
 @socketio.on('capture', namespace='/test')
