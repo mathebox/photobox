@@ -60,3 +60,10 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+
+# Fakecam dir
+fakecam/*
+
+# Displayed photo
+app/static/img/pic.jpg

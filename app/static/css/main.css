@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    /* select no text */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;
+}
+
+body {
+    background-color: #000000;
+}
+
+#photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: -10;
+}
+
+.fallback-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: #FFFFFF;
+    font-weight: 100;
+    text-align: center;
+    z-index: -20;
+}
+
+#photo-count {
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+    font-size: 50px;
+    text-align: center;
+    line-height: 100px;
+    color: #dddddd;
+}
+
+#capture-button {
+    background-color: #F33921;
+    position: fixed;
+    bottom: 20px;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: inset -10px -10px 100px black, 10px 10px 20px black, inset 0px 0px 10px black;
+    box-shadow: inset -10px -10px 60px black, 5px 5px 10px black, inset 0px 0px 10px black;
+    display: table;
+    font-size: 45px;
+    font-weight: 100;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#capture-button::after {
+    background-color: rgba(255, 255, 255, 0.3);
+    content: '';
+    height: 45%;
+    width: 12%;
+    position: absolute;
+    top: 4%;
+    left: 15%;
+    border-radius: 50%;
+    transform: rotate(40deg);
+}
+
+#capture-button:active {
+    transform: translate(-50%, 5px);
+}
+
+#capture-button span {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
