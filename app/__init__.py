@@ -38,4 +38,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
 
+
+DEFAULT_IMAGE_PATH = 'static/img/pic.jpg'
+
 from app import views
