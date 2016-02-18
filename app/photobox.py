@@ -18,6 +18,7 @@ def start():
 
 def count_photos():
     global photo_count
+    camera.init()
     photo_count = camera.current_photo_count()
     camera.download_latest_photo(photo_count)
     send_latest_photo(photo_count)
