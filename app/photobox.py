@@ -1,7 +1,7 @@
 from app import socketio, DEFAULT_IMAGE_PATH
 import threading
 import time
-import isight as camera
+import dslr as camera
 
 
 thread = None
@@ -23,12 +23,17 @@ def count_photos():
     camera.download_latest_photo(photo_count)
     send_latest_photo(photo_count)
     while True:
-        time.sleep(0.5)
         new_photo_count = camera.current_photo_count()
-        if new_photo_count != photo_count:
+        if new_photo_count != photo_count and new_photo_count > -1:
             photo_count = new_photo_count
+            t1 = time.time()
             camera.download_latest_photo(photo_count)
+            t2 = time.time()
             send_latest_photo(photo_count)
+            t3 = time.time()
+            print 'download:', (t2-t1), ' ---- send:', (t3-t2)
+        else:
+            time.sleep(0.5)
 
 
 def send_latest_photo(photo_count, broadcast=True):
