@@ -27,6 +27,7 @@ def current_photo_count():
 
 
 def download_latest_photo(photo_nr):
+    raw_default_image_path_app = 'app/static/img/raw.jpg'
     default_image_path_app = 'app/%s' % DEFAULT_IMAGE_PATH
     if photo_nr == 0:
         rm_proc = subprocess.Popen(['rm', default_image_path_app],
@@ -34,10 +35,15 @@ def download_latest_photo(photo_nr):
         return
     cp_proc = subprocess.Popen(['gphoto2',
                                 '--get-file=%d' % photo_nr,
-                                '--filename=%s' % default_image_path_app,
-                                '--force-overwrite'],
-                               stdout=subprocess.PIPE)
+                                '--filename=%s' % raw_default_image_path_app,
+                                '--force-overwrite'])
     cp_proc.wait()
+    convert_proc = subprocess.Popen(['epeg',
+                                '--max=%d' % 1000,
+                                '--quality=%d' % 50,
+                                raw_default_image_path_app,
+                                default_image_path_app])
+    convert_proc.wait()
 
 
 def capture_photo():
