@@ -4,8 +4,8 @@ import subprocess
 
 
 def init():
-    detect_proc = subprocess.Popen(['gphoto2', ' --auto-detect'])
-    detect_proc.wait()
+    detect_proc = subprocess.Popen(['gphoto2', ' --auto-detect', '--quiet'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    _, _ = detect_proc.communicate()
     target_proc = subprocess.Popen(['gphoto2', ' --get-config', 'capturetarget'], stdout=subprocess.PIPE)
     for line in target_proc.stdout:
         if line.startswith('Choice:') and line.endswith('Memory card'):
@@ -17,10 +17,10 @@ def init():
 
 def current_photo_count():
     ls_proc = subprocess.Popen(['gphoto2', '--num-files', '--folder=/store_00020001/DCIM/100CANON'], stdout=subprocess.PIPE)
-    response = list(ls_proc.stdout)
-    if len(response) > 0:
+    stdout =  list(ls_proc.stdout)
+    if len(stdout) > 0:
         try:
-            return int(response[0].split()[-1])  # extract file count
+            return int(stdout[0].split()[-1])  # extract file count
         except Exception:
             pass
     return -1

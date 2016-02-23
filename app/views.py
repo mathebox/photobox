@@ -24,4 +24,6 @@ def capture_image():
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
-    photobox.send_initial_photo_count()
+    started = photobox.start()
+    if not started:
+        photobox.send_initial_photo_count()
