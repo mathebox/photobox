@@ -1,6 +1,6 @@
 # photobox
 A web server that shows the latest photo of your camera
-![Photobox setup](https://cdn.rawgit.com/mathebox/photobox/master/app/static/img/setup.svg)
+![Photobox setup](https://cdn.jsdelivr.net/gh/mathebox/photobox@1487b7b36c260cc7266e4b63f9e91b69d8030d31/app/static/img/setup.svg)
 
 ## Requirements
 - **imagesnap** (via homebrew) for using the isight camera of your MacBook
