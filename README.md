@@ -10,7 +10,7 @@ A web server that shows the latest photo of your camera
 ## How to install
 ```
 pip install -r requirements.txt
-bower install
+yarn install
 ```
 
 ## How to start

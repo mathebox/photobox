@@ -1,0 +1,14 @@
+{
+  "name": "photobox",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:mathebox/photobox.git",
+  "author": "Max Bothe",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "cp node_modules/socket.io-client/dist/socket.io.min.js $INIT_CWD/app/static/external"
+  },
+  "dependencies": {
+    "socket.io-client": "^3"
+  }
+}

@@ -11,14 +11,13 @@
         <img id="photo" src="" onerror="this.style.display='none'">
       </div>
       <object>
-      <p class="fallback-text">Start taking photos!</p>
+      <p class="fallback-text"></p>
       <div id="photo-count"></div>
       {% if show_button %}
       <a id="capture-button"><span>PRESS ME</span></a>
       {% endif %}
 
-      <script src="static/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-      <script src="static/bower_components/socket.io-client/socket.io.js" type="text/javascript"></script>
+      <script src="static/external/socket.io.min.js" type="text/javascript"></script>
       <script src="static/js/main.js" type="text/javascript"></script>
   </body>
 </html>

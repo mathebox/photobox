@@ -24,7 +24,7 @@ def download_latest_photo(photo_nr):
         return
     ls_proc = subprocess.Popen(['ls', '-t', FAKECAM_DIR],
                                stdout=subprocess.PIPE)
-    file_name = list(ls_proc.stdout)[0].strip()
+    file_name = list(ls_proc.stdout)[0].strip().decode('UTF-8')
     new_image_path = '%s/%s' % (FAKECAM_DIR, file_name)
     cp_proc = subprocess.Popen(['cp', new_image_path, default_image_path_app],
                                stdout=subprocess.PIPE)

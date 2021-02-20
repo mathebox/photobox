@@ -1,7 +1,7 @@
 from flask import render_template, copy_current_request_context
 from flask import appcontext_tearing_down
 from app import app, socketio
-import photobox
+from . import photobox
 
 
 @app.route('/')

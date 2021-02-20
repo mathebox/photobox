@@ -14,7 +14,7 @@ def init():
         if line.startswith('Choice:') and line.endswith('Memory card'):
             choice_nr = line.split()[1]
             set_proc = subprocess.Popen(['gphoto2', ' --set-config', 'capturetarget=%s' % choice_nr])
-            print 'Set capture target to memory card.'
+            print('Set capture target to memory card')
             set_proc.wait()
 
     folder_proc = subprocess.Popen(['gphoto2', '--list-folders'], stdout=subprocess.PIPE)
