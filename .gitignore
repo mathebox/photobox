@@ -68,7 +68,4 @@ fakecam/*
 # Displayed photo
 app/static/img/pic.jpg
 
-# External static resoueces
-app/static/external/
-
 node_modules/
