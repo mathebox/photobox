@@ -10,7 +10,8 @@ def init():
     detect_proc = subprocess.Popen(['gphoto2', ' --auto-detect', '--quiet'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     _, _ = detect_proc.communicate()
     target_proc = subprocess.Popen(['gphoto2', ' --get-config', 'capturetarget'], stdout=subprocess.PIPE)
-    for line in target_proc.stdout:
+    for raw_line in target_proc.stdout:
+        line = str(raw_line)
         if line.startswith('Choice:') and line.endswith('Memory card'):
             choice_nr = line.split()[1]
             set_proc = subprocess.Popen(['gphoto2', ' --set-config', 'capturetarget=%s' % choice_nr])
@@ -18,7 +19,8 @@ def init():
             set_proc.wait()
 
     folder_proc = subprocess.Popen(['gphoto2', '--list-folders'], stdout=subprocess.PIPE)
-    for line in folder_proc.stdout:
+    for raw_line in folder_proc.stdout:
+        line = str(raw_line)
         stripped_line = line.strip()
         if stripped_line.startswith('-') and stripped_line.endswith('CANON'):
             IMAGE_FOLDER = line.split()[1]
@@ -27,7 +29,7 @@ def init():
 
 def current_photo_count():
     ls_proc = subprocess.Popen(['gphoto2', '--num-files', '--folder=/store_00020001/DCIM/%s' % IMAGE_FOLDER], stdout=subprocess.PIPE)
-    stdout =  list(ls_proc.stdout)
+    stdout = list(ls_proc.stdout)
     if len(stdout) > 0:
         try:
             return int(stdout[0].split()[-1])  # extract file count
@@ -58,7 +60,7 @@ def download_latest_photo(photo_nr):
     convert_proc.wait()
     t3 = time.time()
 
-    print 'cp:', (t2-t1), ' ---- convert:', (t3-t2)
+    print('cp:', (t2-t1), ' ---- convert:', (t3-t2))
 
 
 def capture_photo():
