@@ -1,7 +1,7 @@
 from app import socketio, DEFAULT_IMAGE_PATH
 import threading
 import time
-from . import isight as camera
+from . import dslr as camera
 
 
 thread = None
