@@ -39,8 +39,9 @@ def current_photo_count():
 
 
 def download_latest_photo(photo_nr):
-    raw_default_image_path_app = 'app/static/img/raw.jpg'
-    default_image_path_app = 'app/%s' % DEFAULT_IMAGE_PATH
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    raw_default_image_path_app = current_dir + '/static/img/raw.jpg'
+    default_image_path_app = current_dir + '/' + DEFAULT_IMAGE_PATH
     if photo_nr == 0:
         rm_proc = subprocess.Popen(['rm', default_image_path_app],
                                    stdout=subprocess.PIPE)
