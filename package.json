@@ -6,7 +6,7 @@
   "author": "Max Bothe",
   "license": "MIT",
   "scripts": {
-    "postinstall": "cp node_modules/socket.io-client/dist/socket.io.min.js $INIT_CWD/app/static/external"
+    "postinstall": "mkdir $INIT_CWD/app/static/external && cp node_modules/socket.io-client/dist/socket.io.min.js $INIT_CWD/app/static/external"
   },
   "dependencies": {
     "socket.io-client": "^3"

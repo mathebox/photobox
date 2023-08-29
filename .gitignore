@@ -68,4 +68,7 @@ fakecam/*
 # Displayed photo
 app/static/img/pic.jpg
 
+# JS dist
+app/static/external/*
+
 node_modules/
