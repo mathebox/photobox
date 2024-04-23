@@ -3,8 +3,8 @@ import os
 import subprocess
 from datetime import datetime
 
-
 FAKECAM_DIR = 'fakecam'
+
 
 def init():
     if not os.path.exists(FAKECAM_DIR):
@@ -21,6 +21,7 @@ def download_latest_photo(photo_nr):
     if photo_nr == 0:
         rm_proc = subprocess.Popen(['rm', default_image_path_app],
                                    stdout=subprocess.PIPE)
+        rm_proc.wait()
         return
     ls_proc = subprocess.Popen(['ls', '-t', FAKECAM_DIR],
                                stdout=subprocess.PIPE)
@@ -41,3 +42,4 @@ def capture_photo():
                                 snapshot_path_old,
                                 snapshot_path_new],
                                stdout=subprocess.PIPE)
+    mv_proc.wait()

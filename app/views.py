@@ -1,5 +1,4 @@
-from flask import render_template, copy_current_request_context
-from flask import appcontext_tearing_down
+from flask import render_template
 from app import app, socketio
 from . import photobox
 
