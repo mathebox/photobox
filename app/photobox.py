@@ -36,12 +36,12 @@ def count_photos():
         elif new_photo_count != photo_count and new_photo_count >= 0:
             photo_count = new_photo_count
             resend_photo = False
-            t1 = time.time()
+            # t1 = time.time()
             camera.download_latest_photo(photo_count)
-            t2 = time.time()
+            # t2 = time.time()
             send_latest_photo(photo_count)
-            t3 = time.time()
-            print('download:', (t2-t1), ' ---- send:', (t3-t2))
+            # t3 = time.time()
+            # print('download:', (t2 - t1), ' ---- send:', (t3 - t2))
         elif resend_photo:
             resend_photo = False
             send_latest_photo(photo_count)

@@ -1,7 +1,7 @@
 from app import DEFAULT_IMAGE_PATH
 import os
 import subprocess
-import time
+# import time
 
 IMAGE_FOLDER = "/store_00020001/DCIM/100CANON"
 
@@ -59,22 +59,22 @@ def download_latest_photo(photo_nr):
                                    stdout=subprocess.PIPE)
         rm_proc.wait()
         return
-    t1 = time.time()
+    # t1 = time.time()
     cp_proc = subprocess.Popen(['gphoto2',
                                 '--get-file=%d' % photo_nr,
                                 '--filename=%s' % raw_default_image_path_app,
                                 '--force-overwrite'])
     cp_proc.wait()
-    t2 = time.time()
+    # t2 = time.time()
     convert_proc = subprocess.Popen(['epeg',
                                      '--max=%d' % 1000,
                                      '--quality=%d' % 50,
                                      raw_default_image_path_app,
                                      default_image_path_app])
     convert_proc.wait()
-    t3 = time.time()
+    # t3 = time.time()
 
-    print('cp:', (t2-t1), ' ---- convert:', (t3-t2))
+    # print('cp:', (t2 - t1), ' ---- convert:', (t3 - t2))
 
 
 def capture_photo():
