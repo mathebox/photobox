@@ -1,6 +1,3 @@
-from flask import Flask
-from flask_socketio import SocketIO
-
 # Set this variable to "threading", "eventlet" or "gevent" to test the
 # different async modes, or leave it set to None for the application to choose
 # the best option based on available packages.
@@ -33,6 +30,10 @@ if async_mode == 'eventlet':
 elif async_mode == 'gevent':
     from gevent import monkey
     monkey.patch_all()
+
+
+from flask import Flask
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'

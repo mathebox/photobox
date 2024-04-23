@@ -49,22 +49,22 @@ def count_photos():
             time.sleep(0.5)
 
 
-def send_latest_photo(photo_count, broadcast=True):
+def send_latest_photo(photo_count):
     socketio.emit('photo', {
         'photo_count': photo_count,
         'photo_path': DEFAULT_IMAGE_PATH,
-    }, broadcast=broadcast, namespace='/test')
+    }, namespace='/test')
 
 
-def send_error(message, broadcast=True):
+def send_error(message):
     socketio.emit('photo', {
         'photo_count': photo_count,
         'message': message,
-    }, broadcast=broadcast, namespace='/test')
+    }, namespace='/test')
 
 
 def send_initial_photo_count():
-    send_latest_photo(photo_count, broadcast=False)
+    send_latest_photo(photo_count)
 
 
 def capture_photo():
